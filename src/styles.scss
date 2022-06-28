@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.upload-btn {
+  width: 150px;
+  height:40px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  background-color: #BA5A27;
+  margin:auto 0 15px;
+  box-shadow: 4px 5px 24px -14px rgba(26,26,26,0.88);
+  -webkit-box-shadow: 4px 5px 24px -14px rgba(26,26,26,0.88);
+  -moz-box-shadow: 4px 5px 24px -14px rgba(26,26,26,0.88);
+  cursor: pointer;
+}
+
+.upload-btn:disabled {
+  background-color: black;
+}
+
+.upload-btn:hover {
+  background-color: #252525;
+  transition: ease-in .5s;
+}
+
+.upload-btn:active {
+  background-color: #BA5A27;
+  transition: none;
+}

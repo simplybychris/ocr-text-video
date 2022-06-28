@@ -1,0 +1,31 @@
+<div class="upload-container" *ngIf="!imageProcessed">
+  <h1 class="title">You can upload your video</h1>
+  <p class="description">Click on the button to upload your media</p>
+  <div class="input-file-container">
+    <div class="button-wrap">
+      <label class="button" for="upload">Upload File</label>
+      <input #inputFile type="file" name="file" id="upload"
+             class="inputfile" accept="video/*" (change)="fileEvent($event)"/>
+    </div>
+  </div>
+  <video *ngIf="url" width="750" height="460" [src]="url" controls type="video/mp4" autoplay>
+    Your browser does not support the video tag.
+  </video>
+  <button class="upload-btn" [disabled]="!url" (click)="getScreenshot(2)">Process</button>
+</div>
+<div class="process-container" *ngIf="imageProcessed">
+  <button class="upload-btn" (click)="isCropping = !isCropping">Crop</button>
+  <app-cropper *ngIf="isCropping" [src]="imgSrc" (imgCropped)="onImageCrop($event)"></app-cropper>
+  <div class="process-convert" *ngIf="!isCropping">
+    <div class="start-process">
+      <img *ngIf="imgSrc" [src]="imgSrc"/>
+    </div>
+    <img class="arrow" src="http://www.clipartbest.com/cliparts/niE/Eqp/niEEqpRdT.png"/>
+    <div class="end-process">
+      <div class="text">{{imgText}}</div>
+    </div>
+  </div>
+  <span [hidden]="!isLoading"><b>Processing ...</b></span>
+  <button *ngIf="!isLoading" class="upload-btn file-upload" style="margin-top: 40px;" (click)="doOCR()">Convert
+  </button>
+</div>
