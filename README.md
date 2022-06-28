@@ -1,27 +1,8 @@
 # VideoTextOcr
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+Aplikacja na projekt sztuczna inteligencja. 
 
-## Development server
+Program OCR-TEXT-VIDEO ma za zadanie generować tekst kodu z udostępnionego filmu.
+![image](https://user-images.githubusercontent.com/59068947/176304137-712e3090-1f07-4606-af13-e6c9bf45c3b8.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![image](https://user-images.githubusercontent.com/59068947/176304481-91f3dfc0-674f-4ea0-9349-6cdb83254218.png)
