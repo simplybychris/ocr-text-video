@@ -1,5 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { createWorker } from 'tesseract.js';
+import {Component, ElementRef, OnInit} from '@angular/core';
+import {createWorker} from 'tesseract.js';
+// declare var Image: any;
+import {Image} from 'image-js';
 
 @Component({
   selector: 'app-converter',
@@ -10,6 +12,7 @@ export class ConverterComponent implements OnInit {
   blobURL: any = null;
   url: any = null;
   imgSrc: string = '';
+  originalSrc: string = '';
   imageProcessed: boolean = false;
   isLoading: boolean = false;
   isCropping: boolean = false;
@@ -21,8 +24,6 @@ export class ConverterComponent implements OnInit {
   getFileDetails($event: Event) {
   }
 
-  // processNext() {
-  // }
   imgText: string = '';
 
   fileEvent(event: any) {
@@ -45,14 +46,10 @@ export class ConverterComponent implements OnInit {
     canvas.getContext('2d')!.drawImage(videoEl, 0, 0, canvas.width, canvas.height);
 
     this.imgSrc = canvas.toDataURL();
-    // image.src = canvas.toDataURL();
-
     this.imageProcessed = true;
-    // return image;
   }
 
   async doOCR() {
-    console.log('dziala?', this.isLoading)
     this.isLoading = true;
     const worker = createWorker();
     await worker.load();
@@ -83,4 +80,41 @@ export class ConverterComponent implements OnInit {
     this.imgSrc = croppedImg;
     this.isCropping = false;
   }
+
+  async onGaussian() {
+    let image = await Image.load(this.imgSrc);
+
+    let gaussian=image.gaussianFilter({radius:2});
+
+    let mask=gaussian.mask({threshold: 0.25});
+    this.imgSrc = mask.toDataURL();
+  }
+
+  refresh() {
+    this.imgSrc = '';
+    this.imageProcessed = false;
+  }
+
+  async onGrey() {
+    let image = await Image.load(this.imgSrc);
+
+    let grey = image.grey();
+    this.imgSrc = grey.toDataURL();
+
+  }
+
+  contrastImage(imageData: any, contrast: number) {
+
+    var data = imageData.data;
+    var factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+
+    for(var i=0;i<data.length;i+=4)
+    {
+      data[i] = factor * (data[i] - 128) + 128;
+      data[i+1] = factor * (data[i+1] - 128) + 128;
+      data[i+2] = factor * (data[i+2] - 128) + 128;
+    }
+    return imageData.src;
+  }
+
 }

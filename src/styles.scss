@@ -7,28 +7,39 @@
   width: 150px;
   height:40px;
   border-radius: 10px;
-  border: none;
   font-size: 1.5em;
   font-weight: bold;
   color: white;
-  background-color: #BA5A27;
   margin:auto 0 15px;
-  box-shadow: 4px 5px 24px -14px rgba(26,26,26,0.88);
-  -webkit-box-shadow: 4px 5px 24px -14px rgba(26,26,26,0.88);
-  -moz-box-shadow: 4px 5px 24px -14px rgba(26,26,26,0.88);
+  background: #8233C5;
+  box-shadow: 0 4px 15px 0 #8233C5;
+  backdrop-filter: blur( 2.5px );
+  -webkit-backdrop-filter: blur( 2.5px );
+  border: 1px solid rgba(245, 245, 245, 0.67);
   cursor: pointer;
-}
 
-.upload-btn:disabled {
-  background-color: black;
-}
 
-.upload-btn:hover {
-  background-color: #252525;
-  transition: ease-in .5s;
-}
+  &:disabled {
+    background: #9364c0;
+    backdrop-filter: blur( 1.5px );
+    -webkit-backdrop-filter: blur( 1.5px );
+  }
 
-.upload-btn:active {
-  background-color: #BA5A27;
-  transition: none;
+  &:hover {
+    background: #5e358d;
+    transition: ease-in .5s;
+  }
 }
+//
+//.upload-btn:disabled {
+//  background-color: black;
+//}
+//
+//.upload-btn:hover {
+//  background-color: #252525;
+//  transition: ease-in .5s;
+//}
+//
+//.upload-btn:active {
+//  transition: none;
+//}

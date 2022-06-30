@@ -1,9 +1,9 @@
 <div class="upload-container" *ngIf="!imageProcessed">
-  <h1 class="title">You can upload your video</h1>
-  <p class="description">Click on the button to upload your media</p>
+  <h1 class="glass-text" style="margin: 15px 0 5px;">You can upload your video</h1>
+  <p class="description glass-text">Click on the button to upload your media</p>
   <div class="input-file-container">
     <div class="button-wrap">
-      <label class="button" for="upload">Upload File</label>
+      <label class="button glass-text" for="upload">Upload File</label>
       <input #inputFile type="file" name="file" id="upload"
              class="inputfile" accept="video/*" (change)="fileEvent($event)"/>
     </div>
@@ -14,7 +14,12 @@
   <button class="upload-btn" [disabled]="!url" (click)="getScreenshot(2)">Process</button>
 </div>
 <div class="process-container" *ngIf="imageProcessed">
-  <button class="upload-btn" (click)="isCropping = !isCropping">Crop</button>
+  <div class="control-panel">
+    <button class="upload-btn" style="margin-top:20px;" (click)="isCropping = !isCropping">Crop</button>
+    <button class="upload-btn" style="margin-top:20px;" (click)="onGaussian()">Gaussian</button>
+    <button class="upload-btn" style="margin-top:20px;" (click)="onGrey()">Grey</button>
+    <button class="upload-btn" style="margin-top:20px;" (click)="refresh()">Refresh</button>
+  </div>
   <app-cropper *ngIf="isCropping" [src]="imgSrc" (imgCropped)="onImageCrop($event)"></app-cropper>
   <div class="process-convert" *ngIf="!isCropping">
     <div class="start-process">
@@ -25,7 +30,7 @@
       <div class="text">{{imgText}}</div>
     </div>
   </div>
-  <span [hidden]="!isLoading"><b>Processing ...</b></span>
-  <button *ngIf="!isLoading" class="upload-btn file-upload" style="margin-top: 40px;" (click)="doOCR()">Convert
+  <span [hidden]="!isLoading" style="height: 90px"><b>Processing ...</b></span>
+  <button *ngIf="!isLoading" class="upload-btn file-upload" style="margin:20px 0;" (click)="doOCR()">Convert
   </button>
 </div>
