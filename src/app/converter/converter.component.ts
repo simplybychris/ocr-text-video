@@ -84,7 +84,7 @@ export class ConverterComponent implements OnInit {
   async onGaussian() {
     let image = await Image.load(this.imgSrc);
 
-    let gaussian=image.gaussianFilter({radius:2});
+    let gaussian=image.gaussianFilter({radius:1});
 
     let mask=gaussian.mask({threshold: 0.25});
     this.imgSrc = mask.toDataURL();
